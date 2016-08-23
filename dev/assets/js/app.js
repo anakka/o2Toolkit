@@ -1,4 +1,4 @@
-var myApp=angular.module('myApp', ['ui.router','ngSanitize','ui.bootstrap','angularModalService','Routing']);
+var myApp=angular.module('myApp', ['ui.router','ngSanitize','ui.bootstrap','angularModalService','Routing','wt.responsive']);
 
 myApp.config(function($stateProvider, $urlRouterProvider, routerProvider) {         
  
@@ -73,7 +73,7 @@ myApp.controller('modulesController',['$scope','modulesService', function($scope
 
 
 
-myApp.directive('fullSpec', function(){
+/*myApp.directive('fullSpec', function(){
     return {
       restrict: 'AE',
       replace: true,
@@ -87,7 +87,7 @@ myApp.directive('fullSpec', function(){
       }
 
       };
-});
+});*/
 
 
 
@@ -207,4 +207,28 @@ $(function() {
       }
     });
 });
+
+
+
+myApp.directive('compile', ['$compile', function ($compile) {   
+    return function(scope, element, attrs) {
+        scope.$watch(
+            function(scope) {
+                // watch the 'compile' expression for changes
+                return scope.$eval(attrs.compile);
+            },
+            function(value) {
+                // when the 'compile' expression changes
+                // assign it into the current DOM
+                element.html(value);
+
+                // compile the new DOM and link it to the current
+                // scope.
+                // NOTE: we only compile .childNodes so that
+                // we don't get into infinite loop compiling ourselves
+                $compile(element.contents())(scope);
+            }
+        );
+    };
+}])
 

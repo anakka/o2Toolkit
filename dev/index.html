@@ -11,7 +11,18 @@
   <link rel="stylesheet" href="//static.o2.co.uk/shared/css/custom-classes.css?ts=240320160945" type="text/css" /> 
   <link rel="stylesheet" href="//static.o2.co.uk/shared/css/global.css" type="text/css" /> 
  <link rel="stylesheet" href="assets/css/all-modules.min.css" type="text/css" /> 
-   
+   <!--[if IE 9]>
+    <style>
+    /* rules for IE9 only */
+    .responsive {
+        overflow: hidden;
+    }
+    .responsive td:nth-child(odd), .responsive td:nth-child(even) {
+        float: left;
+        width: 100%;
+    }
+    </style>
+    <![endif]-->
   
 </head>
 <body ng-cloak ng-controller="modulesController"> 

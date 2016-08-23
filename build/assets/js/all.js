@@ -45304,7 +45304,38 @@ var effectTransfer = $.effects.effect.transfer = function( o, done ) {
 
 
 }));
-var myApp=angular.module('myApp', ['ui.router','ngSanitize','ui.bootstrap','angularModalService','Routing']);
+// https://github.com/awerlang/angular-responsive-tables
+(function() {
+    "use strict";
+    function wtResponsiveTable() {   
+        return { 
+            restrict: "AC", 
+            compile: function(element, attrs) {
+                console.log(element)
+                element.addClass("responsive");
+                var headers = element[0].querySelectorAll("tr > th");
+                if (headers.length) {
+                    var rows = element[0].querySelectorAll("tbody > tr");
+                    Array.prototype.forEach.call(rows, function(row) {
+                        var headerIndex = 0;
+                        Array.prototype.forEach.call(row.querySelectorAll("td"), function(value, index) {
+                            var th = value.parentElement.querySelector("th") || headers.item(headerIndex);
+                            var title = th.textContent;
+                            if (title && !value.getAttributeNode("data-title")) {
+                                value.setAttribute("data-title", title);
+                            }
+                            var colspan = value.getAttributeNode("colspan");
+                            headerIndex += colspan ? parseInt(colspan.value) : 1;
+                        });
+                    });
+                }
+            }
+        };
+    }   
+    "use strict";
+    angular.module("wt.responsive", []).directive("wtResponsiveTable", [ wtResponsiveTable ]);
+})();
+var myApp=angular.module('myApp', ['ui.router','ngSanitize','ui.bootstrap','angularModalService','Routing','wt.responsive']);
 
 myApp.config(function($stateProvider, $urlRouterProvider, routerProvider) {         
  
@@ -45379,7 +45410,7 @@ myApp.controller('modulesController',['$scope','modulesService', function($scope
 
 
 
-myApp.directive('fullSpec', function(){
+/*myApp.directive('fullSpec', function(){
     return {
       restrict: 'AE',
       replace: true,
@@ -45393,7 +45424,7 @@ myApp.directive('fullSpec', function(){
       }
 
       };
-});
+});*/
 
 
 
@@ -45516,82 +45547,29 @@ $(function() {
 
 
 
-var myApp=myApp.directive('preCode', function($timeout){
-    return {
-      restrict: 'AE',
-      replace: true,
-      scope:{name:"@"},
-      template:"<pre class='preCode prettyprint'>sadas</pre>",
-      link:function($scope, element) {
-        $timeout(function() {
-        $('[data-behavior="sample_code"').each(function(){ 
-          var container = $(this);
-          
-          //var target = container.closest('.preCode'); 
-          //if we have a target
-          
-            // get the sample's html
-            var sample_html = container.html();
-            var white_space = "☺";
-            // find how many spaces are before the part of the html
-            try {
-              white_space = sample_html.match(/\n+\s+\S/)[0].slice(0,(sample_html.match(/\n+\s+\S/)[0].length-3));
-            } catch(err) {}
-            // set up a regex to search for a white space string
-            var re = new RegExp(white_space,"g");
-            // replace white_space, < and > with &lt; and &gt; and remove the sample_code ref
-            sample_html = sample_html.replace(re,"\n").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(' data-behavior="sample_code"','');
-            // trim out any new lines at begining or end of string
-            sample_html = $.trim(sample_html);
-            // stick into target
-             element.html("<code>"+sample_html+"</code>");
-          
-        });
-        });
-      }
+myApp.directive('compile', ['$compile', function ($compile) {   
+    return function(scope, element, attrs) {
+        scope.$watch(
+            function(scope) {
+                // watch the 'compile' expression for changes
+                return scope.$eval(attrs.compile);
+            },
+            function(value) {
+                // when the 'compile' expression changes
+                // assign it into the current DOM
+                element.html(value);
 
-
-      }; 
-});
-
-myApp.directive("fileread", [function () {
-    return {
-        scope: {
-            fileread: "="
-        },
-        link: function (scope, element) {
-            element.bind("change", function (changeEvent) {  
-                var reader = new FileReader();
-                reader.onload = function (loadEvent) {
-                    scope.$apply(function () {
-                        scope.fileread = loadEvent.target.result;
-                    });
-                };
-                reader.readAsDataURL(changeEvent.target.files[0]);
-            });
-        }
+                // compile the new DOM and link it to the current
+                // scope.
+                // NOTE: we only compile .childNodes so that
+                // we don't get into infinite loop compiling ourselves
+                $compile(element.contents())(scope);
+            }
+        );
     };
-}]);
+}])
 
 
-//Directive for adding buttons on click that show an alert on click
-myApp.directive("addmodules", function($compile){
-   
-  return {
-    restrict: 'EA',
-   scope: {
-    
-    name: '@' ,
-    module:"@"        },
-    link: function (scope, element, attrs) { 
-      element.bind("click", function(){
-          
-        angular.element('.section-wrap').append($compile("<"+scope.name+" name='"+scope.module+"' /> ")(scope));
-      });
-    } //DOM manipulation
-    
-  };
-});
 
 var myApp=myApp.directive('promoMDirective', function($rootScope,$compile,ModalService,$window) {
   return {
@@ -45669,6 +45647,85 @@ myApp.controller('ModalController', function($scope, close,options) {
 
 
 
+
+var myApp=myApp.directive('preCode', function($timeout){
+    return {
+      restrict: 'AE',
+      replace: true,
+      scope:{name:"@"},
+      template:"<pre class='preCode prettyprint'>sadas</pre>",
+      link:function($scope, element) {
+        $timeout(function() {
+        $('[data-behavior="sample_code"').each(function(){ 
+          var container = $(this);
+          
+          //var target = container.closest('.preCode'); 
+          //if we have a target
+          
+            // get the sample's html
+            var sample_html = container.html();
+            var white_space = "☺";
+            // find how many spaces are before the part of the html
+            try {
+              white_space = sample_html.match(/\n+\s+\S/)[0].slice(0,(sample_html.match(/\n+\s+\S/)[0].length-3));
+            } catch(err) {}
+            // set up a regex to search for a white space string
+            var re = new RegExp(white_space,"g");
+            // replace white_space, < and > with &lt; and &gt; and remove the sample_code ref
+            sample_html = sample_html.replace(re,"\n").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(' data-behavior="sample_code"','');
+            // trim out any new lines at begining or end of string
+            sample_html = $.trim(sample_html);
+            // stick into target
+             element.html("<code>"+sample_html+"</code>");
+          
+        });
+        });
+      }
+
+
+      }; 
+});
+
+/* For background images in the modal pop-up */
+
+myApp.directive("fileread", [function () {
+    return {
+        scope: {
+            fileread: "="
+        },
+        link: function (scope, element) {
+            element.bind("change", function (changeEvent) {  
+                var reader = new FileReader();
+                reader.onload = function (loadEvent) {
+                    scope.$apply(function () {
+                        scope.fileread = loadEvent.target.result;
+                    });
+                };
+                reader.readAsDataURL(changeEvent.target.files[0]);
+            });
+        }
+    };
+}]);
+
+
+//Directive for adding buttons on click that show an alert on click
+myApp.directive("addmodules", function($compile){
+   
+  return {
+    restrict: 'EA',
+   scope: {
+    
+    name: '@' ,
+    module:"@"        },
+    link: function (scope, element, attrs) { 
+      element.bind("click", function(){
+          
+        angular.element(this).replaceWith($compile("<"+scope.name+" name='"+scope.module+"' /> ")(scope));
+      });
+    } //DOM manipulation
+    
+  };
+});
 
 var myApp=myApp.directive('promoSDirective', function($rootScope,$compile,ModalService,$window,modulesService) {
   return {

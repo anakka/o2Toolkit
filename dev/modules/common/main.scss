@@ -162,7 +162,13 @@ textarea {
 
 
 .default-txt-container {
-    padding:10px 20px 10px;
+
+    h2,p { 
+        padding:0 10px 20px;
+    }
+    h2 {
+        padding-top:10px;
+    }
 }
 .specsLink {
     color: #419eda;
@@ -280,12 +286,12 @@ input::-webkit-calendar-picker-indicator {
 .nav-primary .logo.o2 {
     position: relative;
 }
-.nav-primary .nav-consumer {
+.nav-primary .nav-consumer { 
     display: none;
 }
 .telefonica h1 {
-    font-size:1.6rem;
-    color:#032b5a;
+    font-size:1.6rem; 
+    color:#032b5a; 
 }
 .nav-primary .logo.telefonica {
     float:right;
@@ -293,10 +299,27 @@ input::-webkit-calendar-picker-indicator {
     display: block;
     width:auto;
 }
-.add-module {
-    margin-left:20px;
+.add-modules-border {
     margin-bottom:20px;
+    border:1px dashed #000;
+    box-sizing: border-box; 
 }
+.add-modules {
+    
+        
+    height: 198px;
+    display: table;   
+    width:100%;
+    color: #419eda;
+    
+    div { 
+        display: table-cell;
+        vertical-align: middle;
+        text-align:center
+    }
+}
+
+
 .nav-tabs {
     display: block;
     padding-left: 25px;
@@ -369,6 +392,80 @@ input::-webkit-calendar-picker-indicator {
         padding-bottom:20px;
     }
 }
+
+
+.responsive {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+@media only screen and (max-width: 800px) {
+
+    /* Force table to not be like tables anymore */
+    /* table.responsive,*/
+    .responsive thead,
+    .responsive tbody,
+    .responsive tr,
+    .responsive th {
+        display: block;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    .responsive thead tr, .responsive th {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .responsive tr {
+        border: 1px solid #ccc;
+    }
+
+    .responsive td:nth-child(odd), .responsive td:nth-child(even) {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        white-space: normal;
+        text-align: left;
+
+        display: block;
+        -webkit-box-sizing: content-box;
+           -moz-box-sizing: content-box;
+                box-sizing: content-box;
+        min-height: 1em;
+    }
+
+    .responsive td:nth-child(odd)::before, .responsive td:nth-child(even)::before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        -ms-word-wrap: break-word;
+            word-wrap: break-word;
+        text-align: left;
+        font-weight: bold;
+        /*
+        Label the data
+        */
+        content: attr(data-title);
+    }
+    
+    .responsive td.responsive-omit-title:nth-child(odd), .responsive td.responsive-omit-title:nth-child(even) {
+        padding-left: 6px;
+    }
+
+    .responsive td.responsive-omit-title::before {
+        display: none;
+    }
+
+    .responsive td.responsive-omit-if-empty:empty {
+        display: none;
+    }
+}
 @media screen and (min-width: 575px) {
     .nav-primary .nav-consumer {
         display: block;
@@ -389,11 +486,49 @@ input::-webkit-calendar-picker-indicator {
         padding-top:0;
     }
 
+    .col-2 {
+
+        .module {
+            float:left;            
+            margin-bottom:20px;
+            &:first-child {
+                margin-bottom:20px;
+            }
+            &:nth-child(even) {
+                float:right;
+            } 
+        }
+        .module-section:nth-child(even) {
+            .module {
+                float:right;  
+            }
+        }
+
+    }
+
+    .col-3 {
+
+        .module {
+            float:left;            
+            margin-bottom:20px;
+            &:first-child {
+                margin-bottom:20px;
+            }
+        }
+    }
+
 }
 @media screen and (min-width: 815px) {
     .nav-primary .logo.telefonica {
         padding-top:30px;
     }
+
+    .default-txt-container {
+        
+        p {
+            width:70%;
+        }
+}
 }
 
 

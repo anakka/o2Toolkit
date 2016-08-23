@@ -28,7 +28,7 @@ placeholder {
 .nav-primary {
   background-color: #ebebeb;
   background: #f9f9f9;
-  background-image: url(url();
+  background-image: url();
   background-image: -moz-linear-gradient(top, #f9f9f9 0%, #eaeaea 100%);
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f9f9f9), color-stop(100%, #eaeaea));
   background-image: -webkit-linear-gradient(top, #f9f9f9 0%, #eaeaea 100%);
@@ -242,7 +242,7 @@ placeholder {
       border-bottom-right-radius: 5px;
       border-bottom-left-radius: 5px;
       background: #419eda;
-      background-image: url(url();
+      background-image: url();
       background-image: -moz-linear-gradient(top, #419eda 0%, #2f7cb4 100%);
       background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #419eda), color-stop(100%, #2f7cb4));
       background-image: -webkit-linear-gradient(top, #419eda 0%, #2f7cb4 100%);
@@ -398,7 +398,7 @@ placeholder {
             border: 1px solid #d9d9d9;
             background-color: #f9f9f9;
             background: #f9f9f9;
-            background-image: url(url();
+            background-image: url();
             background-image: -moz-linear-gradient(top, #f9f9f9 0%, #efefef 100%);
             background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f9f9f9), color-stop(100%, #efefef));
             background-image: -webkit-linear-gradient(top, #f9f9f9 0%, #efefef 100%);
@@ -504,7 +504,7 @@ placeholder {
       font-size: 1.154em; }
       #nav-secondary .main-element a:hover {
         background: #f9f9f9;
-        background-image: url(url();
+        background-image: url();
         background-image: -moz-linear-gradient(top, #f9f9f9 0%, #f7f7f7 100%);
         background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f9f9f9), color-stop(100%, #f7f7f7));
         background-image: -webkit-linear-gradient(top, #f9f9f9 0%, #f7f7f7 100%);
@@ -513,7 +513,7 @@ placeholder {
         background-image: linear-gradient(to bottom, #f9f9f9 0%, #f7f7f7 100%); }
     #nav-secondary .main-element:hover {
       background: #f9f9f9;
-      background-image: url(url();
+      background-image: url();
       background-image: -moz-linear-gradient(top, #f9f9f9 0%, #f7f7f7 100%);
       background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f9f9f9), color-stop(100%, #f7f7f7));
       background-image: -webkit-linear-gradient(top, #f9f9f9 0%, #f7f7f7 100%);
@@ -536,7 +536,7 @@ placeholder {
       float: left; }
       #nav-secondary ul li:hover {
         background: #f9f9f9;
-        background-image: url(url();
+        background-image: url();
         background-image: -moz-linear-gradient(top, #f9f9f9 0%, #f7f7f7 100%);
         background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f9f9f9), color-stop(100%, #f7f7f7));
         background-image: -webkit-linear-gradient(top, #f9f9f9 0%, #f7f7f7 100%);
@@ -556,7 +556,7 @@ placeholder {
         border-left: none; }
       #nav-secondary ul .has-shadow:hover {
         background: #f9f9f9;
-        background-image: url(url();
+        background-image: url();
         background-image: -moz-linear-gradient(top, #f9f9f9 0%, #f7f7f7 100%);
         background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f9f9f9), color-stop(100%, #f7f7f7));
         background-image: -webkit-linear-gradient(top, #f9f9f9 0%, #f7f7f7 100%);
@@ -587,7 +587,7 @@ placeholder {
       position: absolute;
       display: block;
       background: #f7f7f7;
-      background-image: url(url();
+      background-image: url();
       background-image: -moz-linear-gradient(top, #f7f7f7 0%, #efefef 100%);
       background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f7f7f7), color-stop(100%, #efefef));
       background-image: -webkit-linear-gradient(top, #f7f7f7 0%, #efefef 100%);
@@ -649,7 +649,7 @@ placeholder {
           margin-right: 1em; }
     #nav-secondary .is-hover {
       background: #f9f9f9;
-      background-image: url(url();
+      background-image: url();
       background-image: -moz-linear-gradient(top, #f9f9f9 0%, #f7f7f7 100%);
       background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f9f9f9), color-stop(100%, #f7f7f7));
       background-image: -webkit-linear-gradient(top, #f9f9f9 0%, #f7f7f7 100%);
@@ -715,7 +715,7 @@ placeholder {
     margin-left: 105px; }
     #nav-secondary .main-element a:hover {
       background: #f9f9f9;
-      background-image: url(url();
+      background-image: url();
       background-image: -moz-linear-gradient(top, #f9f9f9 0%, #f7f7f7 100%);
       background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f9f9f9), color-stop(100%, #f7f7f7));
       background-image: -webkit-linear-gradient(top, #f9f9f9 0%, #f7f7f7 100%);

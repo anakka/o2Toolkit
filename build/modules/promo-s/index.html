@@ -1,23 +1,17 @@
 <div class="grid" ng-repeat="moduleData in moduleData | filter:{name:'Promo S'}">  
-	
 
-	<div class="module label-xxl desktop-fragments-label-xxl-2" > 
-       <h2 >{{moduleData.name}}</h2> 
-       <div class="line"></div> 
-    </div>
-	
 	<div class="default-txt-container">
-		<p>{{moduleData.description}}</p>
-		<full-spec name="View Full Specifications"  />
-		<div class="fullSpecs" ng-bind-html="moduleData.full"></div>
+		<h2 >{{moduleData.name}}</h2> 
+		<p>{{moduleData.description}}</p>		
+		<div class="fullSpecs" compile="moduleData.full"></div>
 	</div>
 	
 	
-	
-	<button addmodules  class="btn-primary add-module" name="promo-s-directive" module="Promo S">Add Module</button>
-
 	<div class="section-wrap col-3"> 
-	  <promo-s-directive name="Promo S" /> 
+		<promo-s-directive name="Promo S" /> 
+		<div class="module add-modules-border" addmodules module="Promo S" name="promo-s-directive"><div class="add-modules"><div class="">+ Add modules</div></div></div>
+		<div class="module add-modules-border" addmodules module="Promo S" name="promo-s-directive"><div class="add-modules"><div class="">+ Add modules</div></div></div>
+		<div class="module add-modules-border" addmodules module="Promo S" name="promo-s-directive"><div class="add-modules"><div class="">+ Add modules</div></div></div>
 	</div>
 
 	<div class="code-snippet">

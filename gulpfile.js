@@ -67,7 +67,7 @@ gulp.task('copyFiles', function() {
     gulp.src(['./dev/assets/data/**'])    
     .pipe(gulp.dest('build/assets/data/'))
 
-    gulp.src(['./dev/assets/js/lib/jquery-1.12.1.min.js','./dev/assets/js/lib/angular.js','./dev/assets/js/lib/ui-bootstrap.js','./dev/assets/js/lib/angular-animate.js','./dev/assets/js/lib/angular-sanitize.js','./dev/assets/js/lib/angular-ui-router.js','./dev/assets/js/lib/angular-mocks.js','./dev/assets/js/lib/angular-modal-service.js','./dev/assets/js/lib/jquery-ui.js','./dev/assets/js/app.js','./dev/modules/**/*controller.js','./dev/modules/**/*directive.js'])
+    gulp.src(['./dev/assets/js/lib/jquery-1.12.1.min.js','./dev/assets/js/lib/angular.js','./dev/assets/js/lib/ui-bootstrap.js','./dev/assets/js/lib/angular-animate.js','./dev/assets/js/lib/angular-sanitize.js','./dev/assets/js/lib/angular-ui-router.js','./dev/assets/js/lib/angular-mocks.js','./dev/assets/js/lib/angular-modal-service.js','./dev/assets/js/lib/jquery-ui.js','./dev/assets/js/lib/responsive-table.js','./dev/assets/js/app.js','./dev/modules/**/*controller.js','./dev/modules/**/*directive.js'])
     .pipe(concat('all.js'))
     .pipe(gulp.dest('build/assets/js/'))    
 

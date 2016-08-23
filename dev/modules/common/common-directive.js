@@ -36,6 +36,8 @@ var myApp=myApp.directive('preCode', function($timeout){
       }; 
 });
 
+/* For background images in the modal pop-up */
+
 myApp.directive("fileread", [function () {
     return {
         scope: {
@@ -68,7 +70,7 @@ myApp.directive("addmodules", function($compile){
     link: function (scope, element, attrs) { 
       element.bind("click", function(){
           
-        angular.element('.section-wrap').append($compile("<"+scope.name+" name='"+scope.module+"' /> ")(scope));
+        angular.element(this).replaceWith($compile("<"+scope.name+" name='"+scope.module+"' /> ")(scope));
       });
     } //DOM manipulation
     

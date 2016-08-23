@@ -142,8 +142,11 @@ button, input, select, textarea {
 textarea {
   width: 100%; }
 
-.default-txt-container {
-  padding: 10px 20px 10px; }
+.default-txt-container h2, .default-txt-container p {
+  padding: 0 10px 20px; }
+
+.default-txt-container h2 {
+  padding-top: 10px; }
 
 .specsLink {
   color: #419eda;
@@ -187,7 +190,7 @@ input::-webkit-calendar-picker-indicator {
   border: 0;
   border-radius: 5px;
   background: #419eda;
-  background-image: url(url();
+  background-image: url();
   background-image: -moz-linear-gradient(top, #419eda 0, #2f7cb4 100%);
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #419eda), color-stop(100%, #2f7cb4));
   background-image: -webkit-linear-gradient(top, #419eda 0, #2f7cb4 100%);
@@ -197,7 +200,7 @@ input::-webkit-calendar-picker-indicator {
 
 .btn-primary:hover {
   background: #2870a7;
-  background-image: url(url();
+  background-image: url();
   background-image: -moz-linear-gradient(top, #2870a7 0, #1d5c90 100%);
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #2870a7), color-stop(100%, #1d5c90));
   background-image: -webkit-linear-gradient(top, #2870a7 0, #1d5c90 100%);
@@ -268,9 +271,20 @@ input::-webkit-calendar-picker-indicator {
   display: block;
   width: auto; }
 
-.add-module {
-  margin-left: 20px;
-  margin-bottom: 20px; }
+.add-modules-border {
+  margin-bottom: 20px;
+  border: 1px dashed #000;
+  box-sizing: border-box; }
+
+.add-modules {
+  height: 198px;
+  display: table;
+  width: 100%;
+  color: #419eda; }
+  .add-modules div {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center; }
 
 .nav-tabs {
   display: block;
@@ -341,6 +355,60 @@ input::-webkit-calendar-picker-indicator {
   .default-content-container ul {
     padding-bottom: 20px; }
 
+.responsive {
+  width: 100%;
+  border-collapse: collapse; }
+
+@media only screen and (max-width: 800px) {
+  /* Force table to not be like tables anymore */
+  /* table.responsive,*/
+  .responsive thead,
+  .responsive tbody,
+  .responsive tr,
+  .responsive th {
+    display: block; }
+  /* Hide table headers (but not display: none;, for accessibility) */
+  .responsive thead tr, .responsive th {
+    position: absolute;
+    top: -9999px;
+    left: -9999px; }
+  .responsive tr {
+    border: 1px solid #ccc; }
+  .responsive td:nth-child(odd), .responsive td:nth-child(even) {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+    white-space: normal;
+    text-align: left;
+    display: block;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    min-height: 1em; }
+  .responsive td:nth-child(odd)::before, .responsive td:nth-child(even)::before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+    text-align: left;
+    font-weight: bold;
+    /*
+        Label the data
+        */
+    content: attr(data-title); }
+  .responsive td.responsive-omit-title:nth-child(odd), .responsive td.responsive-omit-title:nth-child(even) {
+    padding-left: 6px; }
+  .responsive td.responsive-omit-title::before {
+    display: none; }
+  .responsive td.responsive-omit-if-empty:empty {
+    display: none; } }
+
 @media screen and (min-width: 575px) {
   .nav-primary .nav-consumer {
     display: block; }
@@ -353,8 +421,24 @@ input::-webkit-calendar-picker-indicator {
   .default-txt-container {
     padding-top: 0; }
   .default-content-container {
-    padding-top: 0; } }
+    padding-top: 0; }
+  .col-2 .module {
+    float: left;
+    margin-bottom: 20px; }
+    .col-2 .module:first-child {
+      margin-bottom: 20px; }
+    .col-2 .module:nth-child(even) {
+      float: right; }
+  .col-2 .module-section:nth-child(even) .module {
+    float: right; }
+  .col-3 .module {
+    float: left;
+    margin-bottom: 20px; }
+    .col-3 .module:first-child {
+      margin-bottom: 20px; } }
 
 @media screen and (min-width: 815px) {
   .nav-primary .logo.telefonica {
-    padding-top: 30px; } }
+    padding-top: 30px; }
+  .default-txt-container p {
+    width: 70%; } }
